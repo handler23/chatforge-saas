@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatForge — embed teszt</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 640px;
+        margin: 48px auto;
+        padding: 0 16px;
+        line-height: 1.6;
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+      code {
+        background: #1e293b;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      .ok {
+        color: #86efac;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Embed teszt oldal</h1>
+    <p>
+      Ha minden jó, jobb alul megjelenik a <strong>💬</strong> gomb. Kattintásra nyílik a
+      chat ablak (Step 6-tól lesz benne élő AI).
+    </p>
+    <p class="ok">A <code>npm run dev</code> fusson a háttérben.</p>
+
+    <!-- ↓↓↓ Illeszd be a Dashboard-ról másolt TELJES script blokkot IDE (a régi script helyett) ↓↓↓ -->
+
+    <!-- PÉLDA — cseréld a saját bot-id + api-key értékeidre: -->
+    <script
+      src="http://localhost:3000/widget.js"
+      data-bot-id="IDE_A_BOT_ID"
+      data-api-key="IDE_A_CF_KULCS"
+      async
+    ></script>
+  </body>
+</html>

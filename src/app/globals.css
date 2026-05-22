@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --muted-foreground: #64748b;
+}
+
+.dark {
+  --background: #030712;
+  --foreground: #f8fafc;
+  --muted-foreground: #94a3b8;
+}
+
+@layer base {
+  * {
+    @apply border-white/10;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-background font-sans text-foreground antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgb(99 102 241 / 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgb(139 92 246 / 0.08), transparent);
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply border border-white/15 bg-white/5 shadow-xl backdrop-blur-xl;
+  }
+
+  .dark .glass-panel {
+    @apply bg-white/5;
+  }
+
+  :root:not(.dark) .glass-panel {
+    @apply border-slate-200/80 bg-white/70;
+  }
+}
