@@ -1,4 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { createServiceClient } from "@/lib/supabase/admin";
+import { ChatWidget } from "@/components/widget/chat-widget";
 
 export default async function WidgetPage({
   params,
@@ -9,22 +10,38 @@ export default async function WidgetPage({
 }) {
   const { botId } = await params;
   const { key } = await searchParams;
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+
+  if (!key) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-slate-950 p-4 text-sm text-slate-400">
+        Missing API key in embed URL.
+      </main>
+    );
+  }
+
+  const admin = createServiceClient();
+  const { data: bot } = await admin
+    .from("bots")
+    .select("welcome_message, primary_color, is_active")
+    .eq("id", botId)
+    .maybeSingle();
+
+  if (!bot?.is_active) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-slate-950 p-4 text-sm text-slate-400">
+        This chatbot is offline.
+      </main>
+    );
+  }
 
   return (
-    <main className="flex min-h-screen flex-col bg-background p-4">
-      <Card className="flex flex-1 flex-col">
-        <CardHeader>
-          <CardTitle className="text-base">ChatForge</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-1 flex-col justify-end">
-          <p className="mb-4 rounded-xl bg-white/5 p-3 text-sm text-muted-foreground">
-            Widget UI + live chat arrives in Step 6–7. Bot: {botId.slice(0, 8)}…
-          </p>
-          <p className="text-xs text-muted-foreground">
-            API key: {key ? "present" : "missing"}
-          </p>
-        </CardContent>
-      </Card>
-    </main>
+    <ChatWidget
+      botId={botId}
+      apiKey={key}
+      welcomeMessage={bot.welcome_message}
+      primaryColor={bot.primary_color}
+      appUrl={appUrl}
+    />
   );
 }

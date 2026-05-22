@@ -60,4 +60,12 @@ Böngésző: http://localhost:3000
 
 ## Következő lépés
 
-Lépés 5 — Bot CRUD + embed: **„mehet az 5”**
+## Lépés 6 — Élő AI chat
+
+1. **OpenAI:** https://platform.openai.com/api-keys → új kulcs
+2. **Vercel env:** `OPENAI_API_KEY=sk-...` → Redeploy
+3. **Lokálisan:** `.env.local` → `OPENAI_API_KEY=sk-...`
+4. Teszt: embed vagy `http://localhost:3000/embed-test.html` → írj az ügyfélnek
+5. **Dashboard → Conversations** — látod a beszélgetéseket
+
+Lépés 9 — Stripe: **„mehet a 9”**

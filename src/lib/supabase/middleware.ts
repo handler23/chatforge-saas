@@ -36,7 +36,9 @@ export async function updateSession(request: NextRequest) {
     pathname.startsWith("/forgot-password") ||
     pathname.startsWith("/auth");
   const isPublicWidget =
-    pathname.startsWith("/widget") || pathname === "/widget.js";
+    pathname.startsWith("/widget") ||
+    pathname === "/widget.js" ||
+    pathname.startsWith("/api/chat");
 
   const isProtected =
     pathname.startsWith("/dashboard") || pathname.startsWith("/admin");
