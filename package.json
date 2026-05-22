@@ -4,12 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint ."
-  },
-  "engines": {
-    "node": ">=20"
   },
   "dependencies": {
     "@stripe/stripe-js": "^9.6.0",
@@ -38,6 +35,6 @@
     "eslint-config-next": "^16.2.6",
     "postcss": "^8.5.15",
     "tailwindcss": "^4.3.0",
-    "typescript": "^6.0.3"
+    "typescript": "^5.7.3"
   }
 }
