@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "@stripe/stripe-js": "^9.6.0",
