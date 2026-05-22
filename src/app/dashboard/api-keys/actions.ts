@@ -37,7 +37,7 @@ export async function createApiKey(formData: FormData) {
   return { success: "API key created. Copy it now — it won't be shown again.", key: raw };
 }
 
-export async function revokeKeyForm(keyId: string, _formData: FormData) {
+export async function revokeKeyForm(keyId: string) {
   await revokeApiKey(keyId);
 }
 
